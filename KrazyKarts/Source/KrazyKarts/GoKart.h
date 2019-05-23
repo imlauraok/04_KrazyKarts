@@ -27,6 +27,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+	void UpdateLocationFromVelocity(float DeltaTime);
+
 	// The mass of the car in kg
 	UPROPERTY(EditAnywhere)
 	float Mass = 1000;
