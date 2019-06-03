@@ -27,7 +27,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	FVector GetResistance();
+	FVector GetAirResistance();
+
+	FVector GetRollingResistance();
 
 	void ApplyRotation(float DeltaTime);
 
@@ -48,6 +50,10 @@ private:
 	// Amount of drag in kilograms per meter
 	UPROPERTY(EditAnywhere)
 	float DragCoefficient = 16;
+
+	// Amount of rolling resistance
+	UPROPERTY(EditAnywhere)
+	float RollingResistanceCoefficient = 0.015;
 
 	void MoveForward(float Value);
 
