@@ -43,9 +43,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	float MaxDrivingForce = 10000;
 
-	// The maximum number of degrees rotated per second
+	// The minimum radius of the car turning circle at full lock in meters
 	UPROPERTY(EditAnywhere)
-	float MaxDegreesPerSecond = 90;
+	float MinTurningRadius = 10;
 
 	// Amount of drag in kilograms per meter
 	UPROPERTY(EditAnywhere)
