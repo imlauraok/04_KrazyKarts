@@ -60,14 +60,23 @@ void AGoKart::Tick(float DeltaTime)
 
 		if (!HasAuthority())
 		{
-			UnacknowledgedMoves.Add(Move);
-
-			UE_LOG(LogTemp, Warning, TEXT("Queue length: %d"), UnacknowledgedMoves.Num());
-
+			FGoKartMove Move = CreateMove(DeltaTime);
 			Server_SendMove(Move);
 
+			UnacknowledgedMoves.Add(Move);
 			SimulateMove(Move);
 		}
+	}
+
+	if (Role == ROLE_Authority && GetRemoteRole() == ROLE_SimulatedProxy)
+	{
+		FGoKartMove Move = CreateMove(DeltaTime);
+		Server_SendMove(Move);
+	}
+
+	if (Role == ROLE_SimulatedProxy)
+	{
+		SimulateMove(ServerState.LastMove);
 	}
 
 	FVector Force = GetActorForwardVector() * MaxDrivingForce * Throttle;
