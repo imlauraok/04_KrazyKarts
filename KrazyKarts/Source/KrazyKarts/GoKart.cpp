@@ -12,6 +12,7 @@ AGoKart::AGoKart()
 	PrimaryActorTick.bCanEverTick = true;
 
 	bReplicates = true;
+	bReplicateMovement = false;
 
 	MovementComponent = CreateDefaultSubobject<UGoKartMovementComponent>(TEXT("MovementComponent"));
 	MovementReplicator = CreateDefaultSubobject<UGoKartMovementReplicator>(TEXT("MovementReplicator"));
