@@ -63,7 +63,7 @@ private:
 
 	float ClientTimeBetweenLastUpdates;
 
-	FVector ClientStartLocation;
+	FTransform ClientStartTransform;
 
 	UPROPERTY()
 	UGoKartMovementComponent* MovementComponent;
